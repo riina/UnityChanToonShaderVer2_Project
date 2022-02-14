@@ -414,6 +414,8 @@ Shader "Universal Render Pipeline/Toon" {
             Cull[_Cull]
 
             HLSLPROGRAM
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Version.hlsl"
+#if ((UNITY_VERSION >= 202110) || VERSION_GREATER_EQUAL(10, 1))
             // Required to compile gles 2.0 with standard srp library
             #pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
@@ -435,6 +437,7 @@ Shader "Universal Render Pipeline/Toon" {
 
             #include "UniversalToonInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthNormalsPass.hlsl"
+#endif
             ENDHLSL
         }
 
